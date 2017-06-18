@@ -7,32 +7,22 @@ import { Response }          from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import {Programming} from "../models/Programming";
 
 
 @Injectable()
-export class ProgrammingApi extends Api{
+export class PaymentApi extends Api {
 
     name(): String {
-        return 'Programming/Repository.svc';
+        return 'Payment/Repository.svc';
     }
 
 
-    public programming(): Observable<Programming[]> {
-        return this.get('programming')
-            .map(x => {
-                let body = x.json();
-                console.log(body.allResult);
-                return body.allResult || { };
-            })
-            .catch(this.handleError);
-    }
-
-    public find( id: string ): Observable<Programming>{
-        return this.get('programming.find', { id: id}) .map(x => {
-            let body = x.json();
-            return body.findOrFailResult || { };
+    // http://localhost:26997/Payment/Repository.svc/payments/1/programming/?client=yope&quantity=1
+    public store( programming_id: number, quantity: number ): Observable<Object>{
+        return this.get('payment.store', {
+            programming_id: programming_id, quantity: quantity, client: 'test client'
         })
+            .map(x => x.json().storeResult || { })
             .catch(this.handleError);
     }
 

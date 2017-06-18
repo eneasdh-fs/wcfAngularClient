@@ -1,38 +1,24 @@
-/**
- * Created by enea on 11/06/2017.
- */
 import {Injectable} from "@angular/core";
 import {Api} from "./api";
 import { Response }          from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import {Programming} from "../models/Programming";
+import {Product} from "../models/Product";
 
 
 @Injectable()
-export class ProgrammingApi extends Api{
+export class ProductsApi extends Api {
 
     name(): String {
-        return 'Programming/Repository.svc';
+        return 'Products/Repository.svc';
     }
 
 
-    public programming(): Observable<Programming[]> {
-        return this.get('programming')
-            .map(x => {
-                let body = x.json();
-                console.log(body.allResult);
-                return body.allResult || { };
-            })
-            .catch(this.handleError);
-    }
-
-    public find( id: string ): Observable<Programming>{
-        return this.get('programming.find', { id: id}) .map(x => {
-            let body = x.json();
-            return body.findOrFailResult || { };
-        })
+    // http://localhost:26997/Payment/Repository.svc/payments/1/programming/?client=yope&quantity=1
+    public all( ): Observable<Product[]>{
+        return this.get('products' )
+            .map(x => x.json().allResult || [])
             .catch(this.handleError);
     }
 

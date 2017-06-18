@@ -7,3 +7,11 @@
 table{
   width: 100%;
 }
+.image-rounder{
+  border-radius: 50%;
+  width: 60px;
+  height: 60px !important;
+  position: relative;
+  margin: auto;
+  display: block;
+}

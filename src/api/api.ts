@@ -15,8 +15,11 @@ export abstract class Api{
         this.routes['movies'] = ``;
         this.routes['movies.find'] = '${name}';
         this.routes['genres.movies'] = 'genres/${id}/movies';
-        this.routes['programming'] = `/`;
+        this.routes['programming'] = ``;
+        this.routes['programming.find'] = '${id}';
         this.routes['genres.movies'] = 'genres/${id}/movies';
+        this.routes['payment.store'] = 'payments/${programming_id}/programming/?client=${client}&quantity=${quantity}';
+        this.routes['products'] = ``;
     }
 
     public url(name: String, params: Object)
@@ -37,7 +40,6 @@ export abstract class Api{
     {
         let route = this.routes[name.toString()];
 
-        console.log(route, name, 'asd s');
         return `${this.host}/${this.name()}/${route}`;
     }
 
@@ -45,6 +47,10 @@ export abstract class Api{
     public get(name: String, params: Object = {}): Observable<Response> {
 
         return this.http.get(this.url(name, params));
+    }
+
+    public post(name: String, params: Object = {}): Observable<Response> {
+        return this.http.post(this.url(name, params), {});
     }
 
 

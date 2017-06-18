@@ -11,11 +11,12 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { MoviesComponent } from './movies/movies.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ViewComponent } from './movies/view/view.component';
+import { ProductsComponent } from './products/products.component';
 
 
 const appRoutes: Routes = [
   {
-    path: 'movies/:name',
+    path: 'movies/:programming/:name',
     component: ViewComponent,
   },
   {
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
     MdInputDirective,
     MoviesComponent,
     ViewComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,

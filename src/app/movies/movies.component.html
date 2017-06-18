@@ -16,7 +16,7 @@
     <tr>
         <th>Tituto</th>
         <th>Precio</th>
-        <th>Entrada</th>
+        <th>Cupos</th>
         <th>*</th>
     </tr>
     </thead>
@@ -28,7 +28,7 @@
             <span [ngClass]="{error: (p.limit - p.occupied) < p.limit / 30 }">{{ p.limit - p.occupied}}</span>
         </td>
         <td>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  [routerLink]="['/movies', p.movies.url]" routerLinkActive="active">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  [routerLink]="['/movies', p.id, p.movies.url]" routerLinkActive="active">
                 Ver
             </button>
         </td>
