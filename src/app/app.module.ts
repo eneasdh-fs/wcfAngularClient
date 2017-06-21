@@ -12,6 +12,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ViewComponent } from './movies/view/view.component';
 import { ProductsComponent } from './products/products.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 
 const appRoutes: Routes = [
@@ -22,6 +23,10 @@ const appRoutes: Routes = [
   {
     path: 'movies',
     component: MoviesComponent,
+  },
+  {
+    path: 'payments',
+    component: PaymentsComponent,
   },
 ];
 
@@ -34,6 +39,7 @@ const appRoutes: Routes = [
     MoviesComponent,
     ViewComponent,
     ProductsComponent,
+    PaymentsComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@ export abstract class Api{
         this.routes['programming'] = ``;
         this.routes['programming.find'] = '${id}';
         this.routes['genres.movies'] = 'genres/${id}/movies';
-        this.routes['payment.store'] = 'payments/${programming_id}/programming/?client=${client}&quantity=${quantity}';
+        this.routes['payment.store'] = 'payments/${programming_id}/programming/?client=${client}&quantity=${quantity}&element=${element}';
         this.routes['products'] = ``;
     }
 

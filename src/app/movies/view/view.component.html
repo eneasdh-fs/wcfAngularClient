@@ -15,13 +15,14 @@
           <img src="assets/images/{{ programming.movies.url}}.jpg" style="height: 250px">
         </md-grid-tile>
         <md-grid-tile colspan="7" rowspan="1" >
-          <p>
+          <p style="padding: 10px 20px">
             {{ programming.movies.description }}
           </p>
 
         </md-grid-tile>
+
         <md-grid-tile colspan="3" rowspan="1" >
-          <md-card>
+          <md-card  style="width: 100%">
             <md-card-content>
               <h4 class="example-h2">Entradas</h4>
 
@@ -53,44 +54,56 @@
 
   <md-card *ngIf="products !== null ">
     <md-card-content>
-      <h2>Productos</h2>
-      <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table--movies">
-        <thead>
-        <tr>
-          <th></th>
-          <th>Nombre</th>
-          <th>Precio</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let product of products">
-          <td>
-            <md-checkbox [(ngModel)]="product.selected"></md-checkbox>
-          </td>
-          <td><b>{{ product.name}}</b></td>
-          <td>{{ product.price | currency: 'PRN': true}}</td>
-        </tr>
-        </tbody>
-      </table>
+
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+
+          <h4> Complete la compra</h4>
+        <p>
+          <strong>Listo, por favor confirme la compra e imprima el ticket :)</strong>
+        </p>
+
+          <section class="example-section">
+            <button md-raised-button (click)="complete()">Aceptar</button>
+          </section>
+
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+          <h2 style="text-align: right">Productos</h2>
+          <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table--movies" width="100%">
+            <thead>
+            <tr>
+              <th></th>
+              <th>Nombre</th>
+              <th>Precio</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let product of products">
+              <td>
+                <md-checkbox [(ngModel)]="product.selected" (change)="selected(product)"></md-checkbox>
+              </td>
+              <td><b>{{ product.name}}</b></td>
+              <td>{{ product.price | currency: 'PRN': true}}</td>
+            </tr>
+            </tbody>
+          </table>
+
+          <br>
+
+          <p class="prices">
+            Total a pagar: <b>{{ total |currency:'PEN' : true }}</b>
+          </p>
+        </div>
+      </div>
+
+
 
     </md-card-content>
   </md-card>
 
   <md-card>
     <md-card-content>
-      <h4> Complete la compra</h4>
-
-
-        {{ selected }}
-
-
-      <p class="prices">
-        Total a pagar: <b>{{ total |currency:'PEN' : true }}</b>
-      </p>
-
-      <section class="example-section">
-        <button md-raised-button (click)="complete()">Aceptar</button>
-      </section>
 
     </md-card-content>
   </md-card>

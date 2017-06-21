@@ -7,6 +7,7 @@ import { Response }          from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import {Payment} from "../models/Payment";
 
 
 @Injectable()
@@ -18,14 +19,20 @@ export class PaymentApi extends Api {
 
 
     // http://localhost:26997/Payment/Repository.svc/payments/1/programming/?client=yope&quantity=1
-    public store( programming_id: number, quantity: number ): Observable<Object>{
+    public store( programming_id: number, quantity: number, elements: Array<any> ): Observable<Object>{
+
         return this.get('payment.store', {
-            programming_id: programming_id, quantity: quantity, client: 'test client'
+            programming_id: programming_id, quantity: quantity, client: 'test client', element: elements.join('-')
         })
             .map(x => x.json().storeResult || { })
             .catch(this.handleError);
     }
 
+    public all(): Observable<Payment[]>
+    {
+        return this.get('payment').map( x => x.json().allResult || [])
+            .catch(this.handleError);
+    }
 
 
     private handleError (error: Response | any) {
