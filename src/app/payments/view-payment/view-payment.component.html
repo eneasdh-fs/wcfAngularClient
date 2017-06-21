@@ -1,0 +1,21 @@
+<section>
+
+  <div class="mdl-cell mdl-cell--6-col">
+  	<h3>Shopping</h3>
+	<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table--movies">
+	    <thead>
+	    <tr>
+	        <th>Descripción</th>
+	        <th>*</th>
+	    </tr>
+	    </thead>
+	    <tbody>
+	    <tr *ngFor="let p of payment.payment_detail">
+	    	<td><b>{{ p.products.name }}</b></td>
+	    	<td>{{ p.price | currency: 'PEN':false}}</td>
+	    </tr>
+	    </tbody>
+	</table>
+  </div>
+
+</section>

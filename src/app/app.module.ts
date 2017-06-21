@@ -13,9 +13,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { ViewComponent } from './movies/view/view.component';
 import { ProductsComponent } from './products/products.component';
 import { PaymentsComponent } from './payments/payments.component';
-
-
+import { ViewPaymentComponent } from './payments/view-payment/view-payment.component';
 const appRoutes: Routes = [
+  {
+    path: 'payments',
+    component: PaymentsComponent,
+  },
   {
     path: 'movies/:programming/:name',
     component: ViewComponent,
@@ -25,9 +28,10 @@ const appRoutes: Routes = [
     component: MoviesComponent,
   },
   {
-    path: 'payments',
-    component: PaymentsComponent,
+    path: 'payments/:id',
+    component: ViewPaymentComponent
   },
+
 ];
 
 
@@ -40,6 +44,7 @@ const appRoutes: Routes = [
     ViewComponent,
     ProductsComponent,
     PaymentsComponent,
+    ViewPaymentComponent,
   ],
   imports: [
     BrowserModule,

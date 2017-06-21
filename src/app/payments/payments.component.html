@@ -1,3 +1,23 @@
-<p>
-  payments works!
-</p>
+<h2>Pagos</h2>
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table--movies">
+  <thead>
+  <tr>
+    <th>N°</th>
+    <th>Titulo</th>
+    <th>productos</th>
+    <th>*</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let p of payments">
+    <td><b>{{ p.id }}</b></td>
+    <td>{{ p.programming.movies.name }}</td>
+    <td>{{ p.payment_detail.length }}</td>
+    <td>
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  [routerLink]="['/payments/', p.id]" routerLinkActive="active">
+        Ver
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

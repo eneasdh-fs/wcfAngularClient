@@ -37,7 +37,7 @@ export class ViewComponent implements OnInit {
       this.route.params.switchMap(
           (params: Params) => this.api.find(params['programming'])
       ).subscribe((programming: Programming) =>{
-        console.log(Programming);
+        console.log(programming);
         this.total = programming.movies.price;
         return this.programming = programming;
       });

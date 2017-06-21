@@ -20,6 +20,8 @@ export abstract class Api{
         this.routes['genres.movies'] = 'genres/${id}/movies';
         this.routes['payment.store'] = 'payments/${programming_id}/programming/?client=${client}&quantity=${quantity}&element=${element}';
         this.routes['products'] = ``;
+        this.routes['payments.index'] = ``;
+        this.routes['payments.find'] = '${id}';
     }
 
     public url(name: String, params: Object)
@@ -31,7 +33,7 @@ export abstract class Api{
     protected replacer(template: String, obj: Object) {
         let keys = Object.keys(obj);
         let func = Function(...keys, "return `" + template + "`;");
-
+        console.log(keys, obj)
         return func(...keys.map(k => obj[k]));
     }
 

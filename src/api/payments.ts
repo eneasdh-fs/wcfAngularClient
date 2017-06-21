@@ -30,10 +30,14 @@ export class PaymentApi extends Api {
 
     public all(): Observable<Payment[]>
     {
-        return this.get('payment').map( x => x.json().allResult || [])
+        return this.get('payments.index').map( x => x.json().allResult || [])
             .catch(this.handleError);
     }
 
+    public find( id: string ): Observable<Payment>
+    {
+        return this.get('payments.find', { id: id}).map( x => x.json( ).findResult).catch( this.handleError );
+    }
 
     private handleError (error: Response | any) {
         // In a real world app, we might use a remote logging infrastructure
